@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Editar Filme</title>
+
+        <title>Lista de Filmes</title>
+
+        <style>
+
+            body.dark {
+                background-color: #222;
+                color: white;
+            }
+
+            body.dark a {
+                color: #66ccff;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <h1>Editar Filme</h1>
+
+        <input type="hidden" id="id" th:value="${filme.id}">
+
+        <label>Título:</label>
+        <input type="text" id="titulo" th:value="${filme.titulo}">
+
+        <br><br>
+
+        <label>Sinopse:</label>
+        <textarea id="sinopse" th:text="${filme.sinopse}"></textarea>
+
+        <br><br>
+
+        <label>Gênero:</label>
+        <input type="text" id="genero" th:value="${filme.genero}">
+
+        <br><br>
+
+        <label>Ano:</label>
+        <input type="number" id="anoLancamento"
+               th:value="${filme.anoLancamento}">
+
+        <br><br>
+
+        <button id="btnSalvar">Salvar Alterações</button>
+
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="/js/filmes.js"></script>
+
+        <script>
+
+            function trocarTema() {
+
+                document.body.classList.toggle("dark");
+
+                if (document.body.classList.contains("dark")) {
+
+                    document.cookie = "tema=dark; path=/";
+
+                } else {
+
+                    document.cookie = "tema=light; path=/";
+                }
+            }
+
+            window.onload = function () {
+
+                if (document.cookie.includes("tema=dark")) {
+
+                    document.body.classList.add("dark");
+                }
+            }
+
+        </script>
+    </body>
+</html>
